@@ -4,11 +4,8 @@ public:
     bool containsDuplicate(vector<int>& nums) {        
         unordered_set<int> set;
         for (int x : nums) {
-    set.insert(x);
-}
-        if(nums.size() == set.size()) {
-            return false;
+            set.insert(x);
         }
-        return true;
+        return set.size() < nums.size();
     }
 };
