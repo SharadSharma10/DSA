@@ -3,13 +3,11 @@
 #include <set>
 class Solution {
 public:
-    bool containsDuplicate(vector<int>& nums) {
-        // sort(nums.begin(), nums.end());
-        
+    bool containsDuplicate(vector<int>& nums) {        
           set<int> s(nums.begin(), nums.end());
 
-        for (int x : s)
-            cout << x << " ";
+        // for (int x : s)
+        //     cout << x << " ";
         if(nums.size() == s.size()) {
             return false;
         }
