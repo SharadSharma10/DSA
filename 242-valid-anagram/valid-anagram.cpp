@@ -1,20 +1,15 @@
-#include <unordered_map>
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if (s.length() != t.length()) {
-            return false;
-        } 
-        int freq[26] = {0};
-        for(int i = 0; i < s.length(); i++) {
-            freq[s[i] - 'a']++;
+        if (s.length() != t.length()) return false;
+        unordered_map<char, int> count;
+        for (char c : s) {
+            count[c]++;
         }
-        for(int i = 0; i < t.length(); i++) {
-            freq[t[i] - 'a']--;
-        }
-
-        for(int i = 0; i < 26; i++){
-            if( freq[i] != 0){
+        for (char c : t){
+            if(count.find(c) != count.end() && count[c] > 0){
+                count[c]--;
+            } else {
                 return false;
             }
         }
