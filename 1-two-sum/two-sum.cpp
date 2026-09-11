@@ -1,20 +1,15 @@
-#include <vector>
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        std::vector<int> arr;
-        for (int i = 0; i < size(nums); i++) {
-            for(int j = i+1; j < size(nums); j++) {
-                if (nums[i] + nums[j] == target) {
-                    arr.push_back(i);
-                    arr.push_back(j);
-                    break; 
-                }
-                else{
-                    continue;
-                }
+        unordered_map<int, int> seen;
+        for (int i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if(seen.find(complement) != seen.end()){
+                return {i,seen[complement]};
+            } else{
+                seen[nums[i]] = i;
             }
         }
-        return arr;
+        return {};
     }
 };
